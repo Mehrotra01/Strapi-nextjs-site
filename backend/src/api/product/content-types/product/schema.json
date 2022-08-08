@@ -1,0 +1,75 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 71
+    },
+    "slug": {
+      "type": "uid",
+      "required": true,
+      "maxLength": 110,
+      "minLength": 3
+    },
+    "description": {
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "t-shirt",
+        "shirt",
+        "hoodie",
+        "others",
+        "lowers",
+        "pants"
+      ],
+      "default": "others",
+      "required": true
+    },
+    "Size": {
+      "type": "string",
+      "maxLength": 52
+    },
+    "colors": {
+      "type": "enumeration",
+      "enum": [
+        "red",
+        "black",
+        "blue",
+        "green",
+        "yellow",
+        "navy"
+      ],
+      "required": true
+    },
+    "Price": {
+      "type": "integer",
+      "required": true
+    },
+    "AvailableQty": {
+      "type": "integer",
+      "required": true,
+      "default": 0
+    }
+  }
+}
