@@ -1,11 +1,12 @@
 import React from 'react'
+import Image from 'next/image'
 
 
 const products = (props) => {
   return (
     <section className="text-gray-600 body-font">
-  <div className="container px-5 py-24 mx-auto">
-      <div className="flex flex-wrap w-full mb-20 flex-col items-center text-center">
+  <div className="container px-5 md:py-24 mx-auto">
+      <div className="flex flex-wrap w-full md:mb-20 flex-col items-center text-center">
 <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">ECity-Kart - Product List</h1>
 <div className="h-1 w-40 bg-indigo-500 rounded"></div>
 <p className="lg:w-1/2 w-full leading-relaxed mt-3 text-gray-500">Shop owner -{props.name}</p>
@@ -14,17 +15,13 @@ const products = (props) => {
         {props.products.data.map((item)=> {
             return(
       <div className="p-4 md:w-1/3">
-        <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-          <img className="lg:h-48 md:h-36 w-full object-cover object-center" src={item.attributes.image.data && item.attributes.image.data.attributes.name} alt="blog"/>
+        <div className="h-full border-2 border-gray-300 border-opacity-60 rounded-lg overflow-hidden">
+          <Image className="lg:h-48 md:h-36 w-full object-cover object-center" src={"/uploads/"+item.attributes.image.data.attributes.name} alt="blog" width={500} height={500}/>
+		  {/* {console.log(item.attributes.image.data.attributes.formats.small.url)} */}
           <div className="p-6">
             <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">{item.attributes.category}</h2>
             <h1 className="title-font text-lg font-medium text-gray-900 mb-3">{item.attributes.Title}</h1>
-            <div className="hidden bg-red-800"></div>
-            <div className="hidden bg-purple-800"></div>
-            <div className="hidden bg-blue-800 "></div>
-            <div className="hidden  bg-green-800"></div>
-            <div className="hidden bg-gray-800"></div>
-            <button class={"border-2 border-gray-300 ml-1 rounded-full w-6 h-6 focus:outline-none bg-${item.attributes.color}-800"}></button>
+            <button class={"border-2 border-gray-300 ml-1 rounded-full w-6 h-6 focus:outline-none "+ ` bg-${item.attributes.colors}-800`}></button>
             <p className="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
             <div className="flex items-center flex-wrap ">
               <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
