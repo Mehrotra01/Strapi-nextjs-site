@@ -1,35 +1,42 @@
 import React from 'react'
-import Image from 'next/image'
+import Link from 'next/Link'
 
 
-const products = (props) => {
+const Products = (props) => {
   return (
     <section className="text-gray-600 body-font">
   <div className="container px-5 md:py-24 mx-auto">
       <div className="flex flex-wrap w-full md:mb-20 flex-col items-center text-center">
 <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">ECity-Kart - Product List</h1>
-<div className="h-1 w-40 bg-indigo-500 rounded"></div>
+<div className="h-1 w-36 bg-indigo-500 rounded"></div>
 <p className="lg:w-1/2 w-full leading-relaxed mt-3 text-gray-500">Shop owner -{props.name}</p>
 </div> 
     <div className="flex flex-wrap -m-4">
         {props.products.data.map((item)=> {
             return(
-      <div className="p-4 md:w-1/3">
+      <div className="p-4 md:w-1/3" key={item.id}>
         <div className="h-full border-2 border-gray-300 border-opacity-60 rounded-lg overflow-hidden">
-          <Image className="lg:h-48 md:h-36 w-full object-cover object-center" src={"/uploads/"+item.attributes.image.data.attributes.name} alt="blog" width={500} height={500}/>
-		  {/* {console.log(item.attributes.image.data.attributes.formats.small.url)} */}
-          <div className="p-6">
-            <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">{item.attributes.category}</h2>
+          <img className="h-72 rounded m-auto mb-4 mt-4 w-72" src= {`http://localhost:1337${item.attributes.image.data && item.attributes.image.data.attributes.url}`} alt="posts" height={200} width={200}/>
+
+           <div className="p-6">
+            <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 ">{item.attributes.category}</h2>
             <h1 className="title-font text-lg font-medium text-gray-900 mb-3">{item.attributes.Title}</h1>
-            <button class={"border-2 border-gray-300 ml-1 rounded-full w-6 h-6 focus:outline-none "+ ` bg-${item.attributes.colors}-800`}></button>
+            <button className={"border-2 border-gray-300 ml-1 rounded-full w-6 h-6 focus:outline-none "+ ` bg-${item.attributes.colors}-800`}></button>
+            <div className="hidden bg-red-800"></div>
+            <div className="hidden bg-yellow-800"></div>
+            <div className="hidden bg-green-800"></div>
+            <div className="hidden bg-black-800"></div>
+            <div className="hidden bg-blue-800"></div>
+            <div className="hidden bg-purple-800"></div>
             <p className="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
             <div className="flex items-center flex-wrap ">
-              <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+              {/* <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
                 <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14"></path>
-                  <path d="M12 5l7 7-7 7"></path>
+                <path d="M5 12h14"></path>
+                <path d="M12 5l7 7-7 7"></path>
                 </svg>
-              </a>
+              </a> */}
+              <Link href={`/Products/${item.attributes.slug}`} ><button className="flex pd-4 text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded text- md:px-6  my-2">Buy Now</button></Link>
               <span className="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
                 <svg className="w-4 h-4 mr-1" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                   <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
@@ -42,6 +49,7 @@ const products = (props) => {
                 </svg>commentss
               </span>
             </div>
+
           </div>
         </div>
       </div>
@@ -61,4 +69,4 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default products
+export default Products;
