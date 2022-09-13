@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-export default function Navbar() {
+export default function Navbar({cart}) {
   return (
-    <div>
+    <div >
       <header className="text-gray-600 body-font">
   <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
     <nav className="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
@@ -12,10 +12,11 @@ export default function Navbar() {
       <Link href="/contacts"><a className="hover:text-gray-900">Contact</a></Link>
     </nav>
     <Link href="/"><a className="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0">
-      <img src="./logo.svg" alt="logo" width={28}className="my-2"/>
-      <span className="ml-3 text-xl">ECity-Kart</span>
+      <img src="/logo.svg" alt="logo" width={28}className="my-2"/>
+      <p className="ml-3 text-xl">ECity-Kart</p>
     </a></Link>
     <div className="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+    <Link href="/checkout"><button className="flex pd-1 text-dark border-0 text- md:px-1 my-3 mx-4" ><img src="/cartIcon.svg" alt="" width={22} />({cart.length})</button></Link>
     <button className="flex pd-4 text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded text- md:px-6  my-2">Login</button>
     </div>
   </div>
